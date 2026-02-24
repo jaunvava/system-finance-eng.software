@@ -23,5 +23,3 @@ function criarGrafico(idCanvas, tipo, labels, dados, labelDataset) {
 }
 
 criarGrafico('despesasPorCategoria', 'bar', ['Receitas', 'Despesas'], [5000, 900], 'Despesas', 'Receitas', );
-criarGrafico('receitasPorCategoria', 'line', ['Salário', 'Freela'], [3000, 800], 'Receitas');
-criarGrafico('saldoMensal', 'bar', ['Jan', 'Fev'], [1200, 1800], 'Saldo');
