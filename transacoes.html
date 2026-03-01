@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanças Pessoais</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h1>FINANÇAS PESSOAIS</h1>
+        </div>
+
+        <div class="navegacao">
+            <span><a href="index.html">Dashboard</a></span>
+            <span><a href="transacoes.html">Transações</a></span>
+            <span><a href="categorias.html">Categorias</a></span>
+            <span><a href="relatorios.html">Relatórios</a></span>
+            <span><a href="orcamento.html">Orçamento</a></span>
+        </div>
+    </nav>
+
+    <div class="transacoes">
+        <div class="card transacoes">
+            <h2>Transações Recentes</h2>
+
+            <div class="infoTransacoes descricao">
+                <p>Data</p>
+                <p>Descrição</p>
+                <p>Categoria</p>
+                <p>Valor R$</p>
+            </div>
+            <hr>
+            <div class="infoTransacoes"> <!-- Inserir Transações aqui via JavaScript -->
+                <p>22/02/2026</p>
+                <p>Faculdade Católica da Paraíba</p>
+                <p>Estudo</p>
+                <p>775,00</p>
+            </div>
+            <hr>
+            <div class="infoTransacoes"> <!-- Inserir Transações aqui via JavaScript -->
+                <p>22/02/2026</p>
+                <p>Gio Burguer</p>
+                <p>Alimentação</p>
+                <p>76,50</p>
+            </div>
+        </div>
+
+        <div class="card transacoes crud">
+
+            <div class="card">
+                <div>
+                    <h3>Realizar Depósito</h3>
+                    <form id="formDeposito">
+                        <input type="number" placeholder="R$" min="0" required />
+                        <button type="submit" class="buttonDepositar">
+                            Depositar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Realizar Saque</h3>
+                <form id="formSaque">
+                    <input type="number" placeholder="R$" min="0" required />
+                    <button type="submit" class="buttonConfirmar">
+                        Confirmar
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Adicionar Despesa</h3>
+                <form id="formDespesa">
+                    <input type="text" placeholder="Ex: Alimentação" required />
+                    <button type="submit" class="buttonConfirmar">
+                        Adicionar Despesa
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>
