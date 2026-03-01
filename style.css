@@ -205,11 +205,14 @@ input {
 .card.transacoes.crud {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: start;
-    text-align: center;
-    height: auto;
     background-color: #1b1b1b;
 }
+
+.card.transacoes.categoria {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
 
 .buttonDepositar,
 .buttonConfirmar {
@@ -238,11 +241,32 @@ input {
     background: #b91c1c;
 }
 
-
 .infoTransacoes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+.infoTransacoes.categorias {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    align-items: center;
+}
+
+.infoTransacoes.descricao {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+}
+
+.infoCategoria.descricao, .infoCategoria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: center;
+}
+
 
 
 

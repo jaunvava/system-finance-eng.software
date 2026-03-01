@@ -23,14 +23,38 @@
         </div>
     </nav>
 
-    <div class="categorias">
+    <div class="transacoes categorias">
 
+        <div class="card transacoes categorias">
+            <h2>Categorias</h2>
+
+            <div class="infoCategoria descricao ">
+                <p>Descrição</p>
+                <p>Tipo</p>
+            </div>
+            <hr>
+            <div class="infoCategoria"> <!-- Inserir Transações aqui via JavaScript -->
+                <p>Faculdade Católica da Paraíba</p>
+                <p>Estudo</p>
+            </div>
+            <hr>
+            <div class="infoCategoria"> <!-- Inserir Transações aqui via JavaScript -->
+                <p>Gio Burguer</p>
+                <p>Alimentação</p>
+            </div>
+        </div>
+
+        <div class="card transacoes categoria">
+        <div>
+            <h3>Adicionar Categoria</h3>
+            <form id="formCategoria">
+                <input type="text" placeholder="Ex: Transporte" required />
+                <button type="submit" class="buttonDepositar">
+                    Adicionar
+                </button>
+            </form>
+        </div>
     </div>
-
-    <section class="main">
-
-
-    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/script.js"></script>
