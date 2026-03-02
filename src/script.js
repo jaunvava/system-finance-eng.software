@@ -1,4 +1,4 @@
-const STORAGE_KEY = "financas_data";
+const storage_kay = "financas_data";
 
 function getData() {
   const defaultData = {
@@ -13,11 +13,11 @@ function getData() {
     ],
     orcamentos: {},
   };
-  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultData;
+  return JSON.parse(localStorage.getItem(storage_kay)) || defaultData;
 }
 
 function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  localStorage.setItem(storage_kay, JSON.stringify(data));
 }
 
 function formatarMoeda(valor) {
