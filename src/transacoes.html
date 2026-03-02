@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanças Pessoais - Transações</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>FINANÇAS PESSOAIS</h1>
+        </div>
+        <div class="navegacao">
+            <span><a href="index.html">Dashboard</a></span>
+            <span><a href="transacoes.html">Transações</a></span>
+            <span><a href="categorias.html">Categorias</a></span>
+            <span><a href="relatorios.html">Relatórios</a></span>
+            <span><a href="orcamento.html">Orçamento</a></span>
+        </div>
+    </nav>
+    <div class="transacoes">
+        <div class="card transacoes">
+            <h2>Todas as Transações</h2>
+            <div class="infoTransacoes descricao">
+                <p>Data</p>
+                <p>Descrição</p>
+                <p>Tipo/Cat.</p>
+                <p>Valor (R$)</p>
+                <p>Ação</p>
+            </div>
+            <hr>
+            <div id="listaTransacoes" style="max-height: 250px; overflow-y: auto; text-align: left;"></div>
+        </div>
+        <div class="card transacoes crud">
+            <div class="card" style="margin-right:1rem;">
+                <h3>Adicionar Receita</h3>
+                <form id="formReceita">
+                    <input type="text" placeholder="Descrição" required />
+                    <input type="number" placeholder="Valor R$" min="0" step="0.01" required />
+                    <input type="date" required />
+                    <button type="submit" class="buttonDepositar">Salvar Receita</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Adicionar Despesa</h3>
+                <form id="formDespesa">
+                    <input type="text" placeholder="Descrição" required />
+                    <select id="catDespesa" required></select>
+                    <input type="number" placeholder="Valor R$" min="0" step="0.01" required />
+                    <input type="date" required />
+                    <button type="submit" class="buttonConfirmar">Salvar Despesa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
