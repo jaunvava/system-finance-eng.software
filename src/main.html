@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finanças Pessoais</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+      :root {
+        --primary-dark: #1f2933;
+        --bg-light: #f2f4f8;
+        --accent-blue: #38bdf8;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-light);
+        min-height: 100vh;
+      }
+
+      h1, h2, h3, .navbar-brand {
+        font-family: 'Oswald', sans-serif;
+      }
+
+      .navbar {
+        background-color: var(--primary-dark) !important;
+        padding: 1rem 0;
+      }
+
+      .navbar-brand {
+        letter-spacing: 2px;
+        font-size: 1.25rem;
+      }
+
+      .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin: 0 0.5rem;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: var(--accent-blue) !important;
+        transform: translateY(-2px);
+      }
+
+      .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--accent-blue);
+      }
+
+      .card {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+      }
+
+      .mini-card-border {
+        border-left: 5px solid transparent;
+      }
+
+      .border-receita { border-left-color: #22c55e; }
+      .border-despesa { border-left-color: #ef4444; }
+
+      #content-area {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #content-area.loaded {
+        opacity: 1;
+      }
+
+      .btn-primary-custom {
+        background-color: #16a34a;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #15803d;
+      }
+
+      .btn-danger-custom {
+        background-color: #dc2626;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#" onclick="navigateTo('dashboard')">
+          <i class="fa-solid fa-wallet me-2 text-info"></i>FINANÇAS PESSOAIS
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" onclick="navigateTo('dashboard')">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="navigateTo('transacoes')">Transações</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="navigateTo('categorias')">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="navigateTo('relatorios')">Relatórios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="navigateTo('orcamento')">Orçamento</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <div id="content-area">
+        <!-- Content gets loaded here -->
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

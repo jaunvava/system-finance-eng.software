@@ -1,0 +1,57 @@
+<div class="row mb-5 animate__animated animate__fadeIn">
+    <div class="col-12 text-center">
+        <h1 class="display-5 fw-bold mb-2">Bem-vindo ao seu Dashboard</h1>
+        <p class="lead text-muted">Acompanhe suas finanças de forma simples e intuitiva.</p>
+    </div>
+</div>
+
+<!-- Resumo de Saldos -->
+<div class="row g-4 mb-5 animate__animated animate__fadeInUp">
+    <div class="col-lg-6">
+        <div class="card h-100 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-secondary fw-bold text-uppercase small mb-0">Saldo Atual</h5>
+                <i class="fa-solid fa-scale-balanced text-primary fs-4"></i>
+            </div>
+            <h1 class="display-4 fw-bold text-success mb-0" id="saldo-display">R$ 0,00</h1>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card h-100 p-4 border-start border-5 border-success">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <p class="mb-0 text-secondary small fw-bold">Receitas</p>
+                <i class="fa-solid fa-arrow-up text-success"></i>
+            </div>
+            <h3 class="fw-bold mb-0 text-dark" id="receitas-display">R$ 0,00</h3>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card h-100 p-4 border-start border-5 border-danger">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <p class="mb-0 text-secondary small fw-bold">Despesas</p>
+                <i class="fa-solid fa-arrow-down text-danger"></i>
+            </div>
+            <h3 class="fw-bold mb-0 text-dark" id="despesas-display">R$ 0,00</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Gráficos -->
+<div class="row g-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+    <div class="col-lg-7">
+        <div class="card p-4 h-100">
+            <h5 class="fw-bold mb-4"><i class="fa-solid fa-chart-line me-2 text-primary"></i>Visão Geral do Saldo</h5>
+            <div style="height: 350px;">
+                <canvas id="graficoSaldo"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card p-4 h-100">
+            <h5 class="fw-bold mb-4"><i class="fa-solid fa-chart-pie me-2 text-primary"></i>Despesas por Categoria</h5>
+            <div style="height: 350px;">
+                <canvas id="graficoDespesas"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
