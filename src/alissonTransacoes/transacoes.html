@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanças Pessoais - Transações</title>
+    <link rel="stylesheet" href="/src/alissonTransacoes/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h1>FINANÇAS PESSOAIS</h1>
+        </div>
+        <div class="saldo Nav" id="saldo"> 
+            R$ 0,00
+        </div>
+        <div class="navegacao">
+            <span><a href="index.html">Dashboard</a></span>
+            <span><a href="transacoes.html">Transações</a></span>
+            <span><a href="categorias.html">Categorias</a></span>
+            <span><a href="relatorios.html">Relatórios</a></span>
+            <span><a href="orcamento.html">Orçamento</a></span>
+        </div>
+    </nav>
+    <div class="transacoes">
+        <div class="card transacoes">
+            <h2>Todas as Transações</h2>
+            <div class="infoTransacoes descricao">
+                <p>ID</p>
+                <p>Data</p>
+                <p>Descrição</p>
+                <p>Tipo/Cat.</p>
+                <p>Valor (R$)</p>
+                <p></p>
+            </div>
+            <hr>
+            <div id="listaTransacoes">
+
+            </div>
+
+
+            <div>
+                <button type="button" class="buttonDepositar" id="botaoAbrirTransacao">Realizar Transação</button>
+            </div>
+
+            <dialog id="modalDialog">
+                <section class="card transacoes crud">
+                    <div class="card transacao">
+                        <div class="card transacao novaTransacao">
+                            <h3>Nova Transação</h3>
+                            <button type="button" class="buttonFechar" id="botaoFechar">X</button>
+                        </div>
+                        <form id="formTransacao">
+
+                            <select id="tipo" required>
+                                <option value="receita">RECEITA</option>
+                                <option value="despesa">DESPESA</option>
+                            </select>
+
+                            <input id="valor" type="number" placeholder="Valor R$" min="0" step="0.01" required />
+
+                            <input id="data" type="date" required />
+
+                            <input id="descricao" type="text" placeholder="Descrição" required />
+
+                            <select id="categorias" class="selecaoCategorias">
+                                <option id="1" >Alimentação</option>
+                                <option id="2" >Transporte</option>
+                                <option id="3" >Saúde</option>
+                                <option id="4" >Educação</option>
+                                <option id="5" >Lazer</option>
+                                <option id="6" >Outros</option>
+                            </select>
+
+                            <button type="submit" class="buttonDepositar" id="efetuarTransacao">Finalizar Transação</button>
+
+                        </form>
+                    </div>
+                </section>
+            </dialog>
+
+            <dialog id="modalDialogEditar">
+                <section class="card transacoes crud">
+                    <div class="card transacao">
+                        <div class="card transacao novaTransacao">
+                                <h3>Editar Transação</h3>
+                                <button type="button" class="buttonFechar" id="botaoFechar">X</button>                         
+                        </div>
+                        <form id="formEditarTransacao">
+
+                            <select id="tipo" required>
+                                <option value="receita">RECEITA</option>
+                                <option value="despesa">DESPESA</option>
+                            </select>
+
+                            <input id="valor" type="number" placeholder="Valor R$" min="0" step="0.01" required />
+
+                            <input id="data" type="date" required />
+
+                            <input id="descricao" type="text" placeholder="Descrição" required />
+
+                            <select id="categorias" class="selecaoCategorias">
+                                <option id="1" >Alimentação</option>
+                                <option id="2" >Transporte</option>
+                                <option id="3" >Saúde</option>
+                                <option id="4" >Educação</option>
+                                <option id="5" >Lazer</option>
+                                <option id="6" >Outros</option>
+                            </select>
+
+                            <div class="botoesEdicao">
+                                <button type="submit" class="buttonDepositar" id="efetuarTransacao">Salvar Edições</button>
+                                <button type="button" class="buttonConfirmar Excluir" id="excluirTransacao">Excluir Edição</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </dialog>
+        </div>
+
+    </div>
+
+    <script src="/src/alissonTransacoes/scriptTransacoes.js"></script>
+</body>
+
+</html>
