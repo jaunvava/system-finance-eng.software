@@ -1,4 +1,3 @@
-// Elementos globais que serão definidos na inicialização
 let dialog = null;
 let dialogEditar = null;
 let form = null;
@@ -32,7 +31,6 @@ class Transacao {
 function initTransacoes() {
   console.log("Inicializando Transações...");
   
-  // Seleção de elementos (agora que o HTML foi carregado no DOM)
   const modalEl = document.getElementById("modalDialog");
   const modalEditarEl = document.getElementById("modalDialogEditar");
   
@@ -41,7 +39,6 @@ function initTransacoes() {
     return;
   }
 
-  // Inicializa instâncias do Bootstrap
   dialog = new bootstrap.Modal(modalEl);
   dialogEditar = new bootstrap.Modal(modalEditarEl);
   
@@ -53,10 +50,8 @@ function initTransacoes() {
   const botaoAbrir = document.getElementById("botaoAbrirTransacao");
   const botaoExcluir = document.getElementById("excluirTransacao");
 
-  // Popula categorias
   popularCategorias();
 
-  // Event Listeners
   tipo.addEventListener("change", () => {
     const container = document.getElementById("categorias-container");
     if (tipo.value === "despesa") {
@@ -80,7 +75,6 @@ function initTransacoes() {
 
   botaoAbrir.addEventListener("click", () => {
     form.reset();
-    // Default para hoje
     document.getElementById("data").valueAsDate = new Date();
     dialog.show();
   });
@@ -110,13 +104,12 @@ function initTransacoes() {
     excluirTransacaoAtual();
   });
 
-  // Carregar dados
   carregarDados();
 }
 
 function popularCategorias() {
   const selects = document.querySelectorAll("#categorias, #edit-categorias");
-  const { categorias } = getData(); // Função global do script.js
+  const { categorias } = getData();
   
   selects.forEach(select => {
     select.innerHTML = '<option value="" disabled selected>Selecione uma categoria</option>';
@@ -228,7 +221,6 @@ function abrirModalEditar(id) {
   formEditar.querySelector("#edit-descricao").value = transacao.descricao;
   formEditar.querySelector("#edit-categorias").value = transacao.categoriaId;
 
-  // Atualiza visibilidade da categoria no edit
   const container = formEditar.querySelector("#edit-categorias-container");
   if (container) {
     container.style.display = transacao.tipo === "despesa" ? "block" : "none";
@@ -290,7 +282,6 @@ function atualizarLista() {
     return;
   }
 
-  // Ordenar por data (mais recente primeiro)
   const transacoesOrdenadas = [...transacoes].sort((a, b) => new Date(a.data) - new Date(b.data));
   transacoesOrdenadas.forEach(t => adicionarTransacaoNaLista(t));
 }
@@ -300,7 +291,7 @@ function recalcularSaldo() {
     return t.tipo === "receita" ? acc + t.valor : acc - t.valor;
   }, 0);
 
-  const divSaldo = document.getElementById("saldo"); // Se existir no dashboard ou aqui
+  const divSaldo = document.getElementById("saldo");
   if (divSaldo) {
     divSaldo.textContent = saldo.toLocaleString("pt-BR", {
       style: "currency",
@@ -310,11 +301,10 @@ function recalcularSaldo() {
   }
 }
 
-// Persistência sincronizada com o resto do app
 function salvarDados() {
   const data = getData();
   data.transacoes = transacoes;
-  saveData(data); // Função global do script.js
+  saveData(data);
 }
 
 function carregarDados() {
