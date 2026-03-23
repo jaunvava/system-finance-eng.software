@@ -19,8 +19,10 @@ function initRelatorios() {
       });
 
     const mesesKeys = Object.keys(porMes).sort();
-    const ultimo = mesesKeys.length > 0 ? mesesKeys[mesesKeys.length - 1] : null;
-    const penultimo = mesesKeys.length > 1 ? mesesKeys[mesesKeys.length - 2] : null;
+    const ultimo =
+      mesesKeys.length > 0 ? mesesKeys[mesesKeys.length - 1] : null;
+    const penultimo =
+      mesesKeys.length > 1 ? mesesKeys[mesesKeys.length - 2] : null;
 
     const valUltimo = ultimo ? porMes[ultimo] : 0;
     const valPenultimo = penultimo ? porMes[penultimo] : 0;
@@ -38,11 +40,11 @@ function initRelatorios() {
                 <div class="card h-100 p-4">
                     <h5 class="text-secondary small fw-bold text-uppercase mb-3">Comparativo Mensal</h5>
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Atual (${ultimo || '-'}):</span>
+                        <span>Atual (${ultimo || "-"}):</span>
                         <span class="fw-bold">${formatarMoeda(valUltimo)}</span>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <span>Anterior (${penultimo || '-'}):</span>
+                        <span>Anterior (${penultimo || "-"}):</span>
                         <span class="fw-bold text-muted">${formatarMoeda(valPenultimo)}</span>
                     </div>
                 </div>
@@ -59,12 +61,17 @@ function initRelatorios() {
                                 </tr>
                             </thead>
                             <tbody>
-                                ${mesesKeys.reverse().map((m) => `
+                                ${mesesKeys
+                                  .reverse()
+                                  .map(
+                                    (m) => `
                                     <tr>
                                         <td>${m}</td>
                                         <td class="text-end fw-bold">${formatarMoeda(porMes[m])}</td>
-                                    </tr>`).join("")}
-                                ${mesesKeys.length === 0 ? '<tr><td colspan="2" class="text-center text-muted">Sem dados disponíveis</td></tr>' : ''}
+                                    </tr>`,
+                                  )
+                                  .join("")}
+                                ${mesesKeys.length === 0 ? '<tr><td colspan="2" class="text-center text-muted">Sem dados disponíveis</td></tr>' : ""}
                             </tbody>
                         </table>
                     </div>

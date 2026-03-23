@@ -1,108 +1,136 @@
 :root {
-    --primary-dark: #1f2933;
-    --bg-light: #f2f4f8;
-    --accent-blue: #38bdf8;
-    --success-green: #16a34a;
-    --error-red: #dc2626;
+  --primary-dark: #1f2933;
+  --bg-light: #f2f4f8;
+  --accent-blue: #38bdf8;
+  --success-green: #16a34a;
+  --error-red: #dc2626;
 }
 
 body {
-    background-color: var(--bg-light);
-    font-family: 'Inter', sans-serif;
-    color: #1f2933;
-    min-height: 100vh;
+  background-color: var(--bg-light);
+  font-family: "Inter", sans-serif;
+  color: #1f2933;
+  min-height: 100vh;
 }
 
-h1, h2, h3, .navbar-brand {
-    font-family: 'Oswald', sans-serif;
+h1,
+h2,
+h3,
+.navbar-brand {
+  font-family: "Oswald", sans-serif;
 }
 
 .infoTransacoes {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 2fr 1.5fr 1fr 1fr;
-    gap: 10px;
-    padding: 1rem;
-    align-items: center;
-    background: #fff;
-    margin-bottom: 8px;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    border-left: 4px solid #e5e7eb;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 2fr 1.5fr 1fr 1fr;
+  gap: 10px;
+  padding: 1rem;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  border-left: 4px solid #e5e7eb;
 }
 
 .infoTransacoes:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .infoTransacoes p {
-    margin-bottom: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 dialog {
-    border: none;
-    border-radius: 16px;
-    padding: 0;
+  border: none;
+  border-radius: 16px;
+  padding: 0;
 }
 
 dialog::backdrop {
-    background: rgba(31, 41, 51, 0.7);
-    backdrop-filter: blur(4px);
+  background: rgba(31, 41, 51, 0.7);
+  backdrop-filter: blur(4px);
 }
 
 .buttonFechar {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
 .buttonDepositar.Editar {
-    background-color: #f3f4f6;
-    color: #4b5563;
-    border: 1px solid #d1d5db;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.85rem;
-    width: auto;
-    transition: all 0.2s;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  width: auto;
+  transition: all 0.2s;
 }
 
 .buttonDepositar.Editar:hover {
-    background-color: #e5e7eb;
-    color: #1f2933;
+  background-color: #e5e7eb;
+  color: #1f2933;
 }
 
 @media (max-width: 768px) {
-    .infoTransacoes {
-        grid-template-columns: 1fr 1fr;
-        gap: 5px;
-        padding: 0.75rem;
-    }
-    
-    .transacoes-header {
-        display: none !important;
-    }
+  .infoTransacoes {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 0.75rem;
+  }
 
-    .infoTransacoes p:nth-child(1) { font-weight: bold; color: var(--accent-blue); } /* ID */
-    .infoTransacoes p:nth-child(2) { text-align: right; } /* Date */
-    .infoTransacoes p:nth-child(3) { grid-column: 1 / span 2; font-size: 1.1rem; border-bottom: 1px solid #eee; padding-bottom: 5px; } /* Desc */
-    .infoTransacoes p:nth-child(4) { color: #666; font-size: 0.9rem; } /* Category */
-    .infoTransacoes p:nth-child(5) { text-align: right; font-weight: bold; } /* Value */
-    .infoTransacoes button { grid-column: 1 / span 2; width: 100% !important; margin-top: 5px; }
+  .transacoes-header {
+    display: none !important;
+  }
+
+  .infoTransacoes p:nth-child(1) {
+    font-weight: bold;
+    color: var(--accent-blue);
+  }
+  .infoTransacoes p:nth-child(2) {
+    text-align: right;
+  }
+  .infoTransacoes p:nth-child(3) {
+    grid-column: 1 / span 2;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+  }
+  .infoTransacoes p:nth-child(4) {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  .infoTransacoes p:nth-child(5) {
+    text-align: right;
+    font-weight: bold;
+  }
+  .infoTransacoes button {
+    grid-column: 1 / span 2;
+    width: 100% !important;
+    margin-top: 5px;
+  }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate__fadeIn {
-    animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 .selecaoCategorias {
-    display: none;
+  display: none;
 }

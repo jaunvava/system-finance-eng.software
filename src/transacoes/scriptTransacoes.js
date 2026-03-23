@@ -30,21 +30,37 @@ class Transacao {
 
 function initTransacoes() {
   console.log("Inicializando Transações...");
-  
+
   const modalEl = document.getElementById("modalDialog");
   const modalEditarEl = document.getElementById("modalDialogEditar");
-  
+
   if (!modalEl || !modalEditarEl) {
     console.error("Modais não encontrados no DOM");
     return;
   }
 
-  dialog = new bootstrap.Modal(modalEl);
-  dialogEditar = new bootstrap.Modal(modalEditarEl);
-  
+  const createModalMock = (el) => ({
+    show: () => {
+      el.classList.add("show");
+    },
+    hide: () => {
+      el.classList.remove("show");
+    },
+  });
+
+  dialog = createModalMock(modalEl);
+  dialogEditar = createModalMock(modalEditarEl);
+
+  document.querySelectorAll('[data-bs-dismiss="modal"]').forEach((btn) => {
+    btn.addEventListener("click", () => {
+      dialog.hide();
+      dialogEditar.hide();
+    });
+  });
+
   form = document.getElementById("formTransacao");
   formEditar = document.getElementById("formEditarTransacao");
-  
+
   const tipo = document.getElementById("tipo");
   const categoriasSelect = document.getElementById("categorias");
   const botaoAbrir = document.getElementById("botaoAbrirTransacao");
@@ -110,10 +126,11 @@ function initTransacoes() {
 function popularCategorias() {
   const selects = document.querySelectorAll("#categorias, #edit-categorias");
   const { categorias } = getData();
-  
-  selects.forEach(select => {
-    select.innerHTML = '<option value="" disabled selected>Selecione uma categoria</option>';
-    categorias.forEach(cat => {
+
+  selects.forEach((select) => {
+    select.innerHTML =
+      '<option value="" disabled selected>Selecione uma categoria</option>';
+    categorias.forEach((cat) => {
       const option = document.createElement("option");
       option.value = cat;
       option.textContent = cat;
@@ -125,23 +142,31 @@ function popularCategorias() {
 function validarTransacao(dados) {
   const erros = [];
   if (!dados.tipoTransacao) erros.push(MENSAGENS_ERRO.TIPO_INVALIDO);
-  if (!dados.valor || Number(dados.valor) <= 0) erros.push(MENSAGENS_ERRO.VALOR_INVALIDO);
-  
+  if (!dados.valor || Number(dados.valor) <= 0)
+    erros.push(MENSAGENS_ERRO.VALOR_INVALIDO);
+
   const dataHoje = new Date();
   const dataDigitada = new Date(dados.data);
-  if (!dados.data || dataDigitada > dataHoje) erros.push(MENSAGENS_ERRO.DATA_INVALIDA);
-  
+  if (!dados.data || dataDigitada > dataHoje)
+    erros.push(MENSAGENS_ERRO.DATA_INVALIDA);
+
   if (!dados.categoriaId && dados.tipoTransacao === "despesa") {
     erros.push(MENSAGENS_ERRO.CATEGORIA_INVALIDA);
   }
-  
+
   if (dados.descricao.length > 100) erros.push(MENSAGENS_ERRO.DESCRICAO_LONGA);
 
   return { valido: erros.length === 0, erros };
 }
 
 function novaTransacao({ tipoTransacao, valor, data, categoriaId, descricao }) {
-  const validacao = validarTransacao({ tipoTransacao, valor, data, categoriaId, descricao });
+  const validacao = validarTransacao({
+    tipoTransacao,
+    valor,
+    data,
+    categoriaId,
+    descricao,
+  });
 
   if (!validacao.valido) {
     alert(validacao.erros.join("\n"));
@@ -184,10 +209,12 @@ function adicionarTransacaoNaLista(transacao) {
   pDescricao.className = "fw-bold";
 
   const pCategoria = document.createElement("p");
-  pCategoria.textContent = transacao.tipo === "despesa" ? transacao.categoriaId : "-";
+  pCategoria.textContent =
+    transacao.tipo === "despesa" ? transacao.categoriaId : "-";
 
   const pValor = document.createElement("p");
-  const corValor = transacao.tipo === "receita" ? "text-success" : "text-danger";
+  const corValor =
+    transacao.tipo === "receita" ? "text-success" : "text-danger";
   const sinal = transacao.tipo === "receita" ? "+" : "-";
   pValor.textContent = `${sinal} R$ ${transacao.valor.toFixed(2)}`;
   pValor.className = `${corValor} fw-bold`;
@@ -210,11 +237,11 @@ function adicionarTransacaoNaLista(transacao) {
 let idTransacaoEditando = null;
 
 function abrirModalEditar(id) {
-  const transacao = transacoes.find(t => t.id == id);
+  const transacao = transacoes.find((t) => t.id == id);
   if (!transacao) return;
 
   idTransacaoEditando = id;
-  
+
   formEditar.querySelector("#edit-tipo").value = transacao.tipo;
   formEditar.querySelector("#edit-valor").value = transacao.valor;
   formEditar.querySelector("#edit-data").value = transacao.data;
@@ -230,7 +257,7 @@ function abrirModalEditar(id) {
 }
 
 function salvarEdicao() {
-  const transacao = transacoes.find(t => t.id == idTransacaoEditando);
+  const transacao = transacoes.find((t) => t.id == idTransacaoEditando);
   if (!transacao) return;
 
   const tipo = formEditar.querySelector("#edit-tipo").value;
@@ -239,7 +266,13 @@ function salvarEdicao() {
   const descricao = formEditar.querySelector("#edit-descricao").value;
   const categoriaId = formEditar.querySelector("#edit-categorias").value;
 
-  const validacao = validarTransacao({ tipoTransacao: tipo, valor, data, categoriaId, descricao });
+  const validacao = validarTransacao({
+    tipoTransacao: tipo,
+    valor,
+    data,
+    categoriaId,
+    descricao,
+  });
   if (!validacao.valido) {
     alert(validacao.erros.join("\n"));
     return;
@@ -254,7 +287,7 @@ function salvarEdicao() {
   salvarDados();
   atualizarLista();
   recalcularSaldo();
-  
+
   dialogEditar.hide();
   alert("Transação editada com sucesso!");
 }
@@ -262,12 +295,12 @@ function salvarEdicao() {
 function excluirTransacaoAtual() {
   if (!confirm("Tem certeza que deseja excluir esta transação?")) return;
 
-  transacoes = transacoes.filter(t => t.id != idTransacaoEditando);
-  
+  transacoes = transacoes.filter((t) => t.id != idTransacaoEditando);
+
   salvarDados();
   atualizarLista();
   recalcularSaldo();
-  
+
   dialogEditar.hide();
   alert("Transação excluída com sucesso!");
 }
@@ -278,12 +311,15 @@ function atualizarLista() {
 
   lista.innerHTML = "";
   if (transacoes.length === 0) {
-    lista.innerHTML = '<div class="text-center py-4 text-muted">Nenhuma transação encontrada.</div>';
+    lista.innerHTML =
+      '<div class="text-center py-4 text-muted">Nenhuma transação encontrada.</div>';
     return;
   }
 
-  const transacoesOrdenadas = [...transacoes].sort((a, b) => new Date(a.data) - new Date(b.data));
-  transacoesOrdenadas.forEach(t => adicionarTransacaoNaLista(t));
+  const transacoesOrdenadas = [...transacoes].sort(
+    (a, b) => new Date(a.data) - new Date(b.data),
+  );
+  transacoesOrdenadas.forEach((t) => adicionarTransacaoNaLista(t));
 }
 
 function recalcularSaldo() {
@@ -297,7 +333,8 @@ function recalcularSaldo() {
       style: "currency",
       currency: "BRL",
     });
-    divSaldo.className = saldo >= 0 ? "text-success fw-bold" : "text-danger fw-bold";
+    divSaldo.className =
+      saldo >= 0 ? "text-success fw-bold" : "text-danger fw-bold";
   }
 }
 

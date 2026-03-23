@@ -1,0 +1,19 @@
+.display-6 {
+  font-size: 2rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.d-grid {
+  display: grid;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.small {
+  font-size: 0.875em;
+}
+.h-100 {
+  height: 100%;
+}

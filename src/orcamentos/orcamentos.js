@@ -5,8 +5,9 @@ function initOrcamento() {
 
   function renderOrc() {
     if (!lista || !select) return;
-    
-    select.innerHTML = '<option value="" disabled selected>Selecione a categoria...</option>';
+
+    select.innerHTML =
+      '<option value="" disabled selected>Selecione a categoria...</option>';
     data.categorias.forEach((c) => {
       const opt = document.createElement("option");
       opt.value = c;
@@ -24,8 +25,9 @@ function initOrcamento() {
 
     const categoriesInBudget = Object.keys(data.orcamentos);
     if (categoriesInBudget.length === 0) {
-        lista.innerHTML = '<div class="text-center py-4 text-muted">Nenhum orçamento definido.</div>';
-        return;
+      lista.innerHTML =
+        '<div class="text-center py-4 text-muted">Nenhum orçamento definido.</div>';
+      return;
     }
 
     categoriesInBudget.forEach((cat) => {
@@ -35,7 +37,7 @@ function initOrcamento() {
       const isOver = gasto > limite;
 
       const card = document.createElement("div");
-      card.className = `card mb-3 p-3 border-start border-4 ${isOver ? 'border-danger bg-danger bg-opacity-10' : 'border-primary'}`;
+      card.className = `card mb-3 p-3 border-start border-4 ${isOver ? "border-danger bg-danger bg-opacity-10" : "border-primary"}`;
       card.innerHTML = `
         <div class="d-flex justify-content-between align-items-center mb-2">
             <h6 class="mb-0 fw-bold">${cat}</h6>
@@ -46,19 +48,19 @@ function initOrcamento() {
             <span>Limite: ${formatarMoeda(limite)}</span>
         </div>
         <div class="progress" style="height: 10px;">
-            <div class="progress-bar ${isOver ? 'bg-danger' : 'bg-primary'}" role="progressbar" style="width: ${progresso}%"></div>
+            <div class="progress-bar ${isOver ? "bg-danger" : "bg-primary"}" role="progressbar" style="width: ${progresso}%"></div>
         </div>
-        ${isOver ? '<div class="text-danger small mt-1 fw-bold"><i class="fa-solid fa-triangle-exclamation me-1"></i> Orçamento estourado!</div>' : ''}
+        ${isOver ? '<div class="text-danger small mt-1 fw-bold"><i class="fa-solid fa-triangle-exclamation me-1"></i> Orçamento estourado!</div>' : ""}
       `;
       lista.appendChild(card);
     });
   }
 
   window.removerOrcamento = function (cat) {
-    if(confirm(`Remover orçamento de ${cat}?`)) {
-        delete data.orcamentos[cat];
-        saveData(data);
-        renderOrc();
+    if (confirm(`Remover orçamento de ${cat}?`)) {
+      delete data.orcamentos[cat];
+      saveData(data);
+      renderOrc();
     }
   };
 
@@ -67,7 +69,9 @@ function initOrcamento() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const cat = select.value;
-      const limit = parseFloat(form.querySelector('input[type="number"]').value);
+      const limit = parseFloat(
+        form.querySelector('input[type="number"]').value,
+      );
       if (cat && limit > 0) {
         data.orcamentos[cat] = limit;
         saveData(data);

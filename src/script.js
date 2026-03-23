@@ -69,8 +69,7 @@ async function navigateTo(pageKey) {
 
     const navbarCollapse = document.getElementById('navbarNav');
     if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse);
-        bsCollapse.hide();
+        navbarCollapse.classList.remove('show');
     }
 
     route.init();
@@ -87,4 +86,12 @@ async function navigateTo(pageKey) {
 
 document.addEventListener("DOMContentLoaded", () => {
     navigateTo('dashboard');
+    
+    const toggler = document.getElementById('navbarTogglerBtn');
+    const collapse = document.getElementById('navbarNav');
+    if(toggler && collapse) {
+      toggler.addEventListener('click', () => {
+        collapse.classList.toggle('show');
+      });
+    }
 });
