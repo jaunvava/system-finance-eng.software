@@ -14,7 +14,8 @@ function initDashboard() {
       if (gastosPorCategoria[t.categoriaId] !== undefined) {
         gastosPorCategoria[t.categoriaId] += t.valor;
       } else {
-        gastosPorCategoria["Outros"] = (gastosPorCategoria["Outros"] || 0) + t.valor;
+        gastosPorCategoria["Outros"] =
+          (gastosPorCategoria["Outros"] || 0) + t.valor;
       }
     }
   });
@@ -29,7 +30,6 @@ function initDashboard() {
   if (receitasEl) receitasEl.textContent = formatarMoeda(receitas);
   if (despesasEl) despesasEl.textContent = formatarMoeda(despesas);
 
-  // Charts
   const ctxSaldo = document.getElementById("graficoSaldo");
   if (ctxSaldo) {
     if (window.chartSaldo) window.chartSaldo.destroy();
@@ -37,14 +37,16 @@ function initDashboard() {
       type: "line",
       data: {
         labels: ["Início", "Atual"],
-        datasets: [{
-          label: "Evolução do Saldo",
-          data: [0, saldo],
-          borderColor: "#16a34a",
-          backgroundColor: "rgba(22, 163, 74, 0.1)",
-          fill: true,
-          tension: 0.4
-        }],
+        datasets: [
+          {
+            label: "Evolução do Saldo",
+            data: [0, saldo],
+            borderColor: "#16a34a",
+            backgroundColor: "rgba(22, 163, 74, 0.1)",
+            fill: true,
+            tension: 0.4,
+          },
+        ],
       },
       options: { responsive: true, maintainAspectRatio: false },
     });
@@ -57,17 +59,28 @@ function initDashboard() {
       type: "doughnut",
       data: {
         labels: Object.keys(gastosPorCategoria),
-        datasets: [{
-          data: Object.values(gastosPorCategoria),
-          backgroundColor: ["#ef4444", "#3b82f6", "#eab308", "#8b5cf6", "#6b7280", "#10b981", "#f97316", "#6366f1"],
-        }],
+        datasets: [
+          {
+            data: Object.values(gastosPorCategoria),
+            backgroundColor: [
+              "#ef4444",
+              "#3b82f6",
+              "#eab308",
+              "#8b5cf6",
+              "#6b7280",
+              "#10b981",
+              "#f97316",
+              "#6366f1",
+            ],
+          },
+        ],
       },
-      options: { 
-        responsive: true, 
+      options: {
+        responsive: true,
         maintainAspectRatio: false,
         plugins: {
-            legend: { position: 'bottom' }
-        }
+          legend: { position: "bottom" },
+        },
       },
     });
   }

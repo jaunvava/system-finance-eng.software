@@ -4,22 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finanças Pessoais</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
-      <div class="container">
+    <nav class="navbar shadow-sm">
+      <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand fw-bold" href="#" onclick="navigateTo('dashboard')">
-          <i class="fa-solid fa-wallet me-2 text-info"></i>FINANÇAS PESSOAIS
+          <i class="fa-solid fa-wallet me-2 text-primary"></i>FINANÇAS PESSOAIS
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" id="navbarTogglerBtn">
+          <i class="fa-solid fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
+        <div class="navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" href="#" onclick="navigateTo('dashboard')">Dashboard</a>
             </li>
@@ -43,13 +42,10 @@
     <main class="container py-5">
       <div id="content-area">
         <div class="text-center py-5">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Carregando...</span>
-          </div>
+          <div class="spinner-border text-primary" role="status"></div>
         </div>
       </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Módulos -->
